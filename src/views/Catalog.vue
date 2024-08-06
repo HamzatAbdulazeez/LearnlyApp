@@ -1,6 +1,13 @@
 <template>
   <div class="products-list">
-    <v-text-field clearable label="Label" prepend-icon="$vuetify"></v-text-field>
+    <v-text-field
+      v-model="searchQuery"
+      clearable
+      label="Search"
+      prepend-icon="mdi-magnify"
+      @input="performSearch"
+      class="ma-2"
+    ></v-text-field>
     <v-row no-gutters>
       <v-col
           v-for="product in store.products"

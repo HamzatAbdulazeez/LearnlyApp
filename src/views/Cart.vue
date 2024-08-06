@@ -1,23 +1,44 @@
 <template>
-  <button @click="router.push({ name: 'Catalog' })">Back to catalog</button>
-  <div v-if="!store.cart.length" style="text-align: center">
-    <h1>Empty Cart ...</h1>
+  <v-container class="pa-4">
+  <v-btn
+    @click="router.push({ name: 'Catalog' })"
+    color="primary"
+    variant="elevated"
+    class="mb-4"
+  >
+    Back to catalog
+  </v-btn>
+
+  <div v-if="!store.cart.length" class="text-center">
+    <h1 class="display-1">Empty Cart ...</h1>
   </div>
-  <div class="cart-items" v-else>
-    <div
-        class="cart-item"
+
+  <div v-else>
+    <v-row class="cart-items">
+      <v-col
         v-for="item in store.cart"
         :key="item.id"
-    >
-      <div class="item-details">
-        <img :src="item.thumbnail" alt="">
-        <span>Brand: {{ item.brand }}</span>
-        <span>Category: {{ item.category }}</span>
-        <span>Price: ${{ item.price }}</span>
-        <button @click="removeFromCart(item.id)">Remove</button>
-      </div>
-    </div>
+        cols="12"
+        md="6"
+        lg="4"
+      >
+        <v-card class="cart-item pa-3" outlined>
+          <v-img :src="item.thumbnail" height="200px" class="rounded-t" cover></v-img>
+          <v-card-title class="headline">{{ item.brand }}</v-card-title>
+          <v-card-subtitle class="grey--text">{{ item.category }}</v-card-subtitle>
+          <v-divider class="my-2"></v-divider>
+          <v-card-text class="subtitle-1 mb-3">Price: ₦{{ (item.price * 750).toFixed(2) }}</v-card-text>
+          <v-card-actions class="d-flex justify-end">
+            <v-btn color="red" @click="removeFromCart(item.id)">
+              Remove
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
+</v-container>
+
 </template>
 
 <script>

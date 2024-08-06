@@ -1,7 +1,6 @@
 <template>
-  <header>
-
-    <v-toolbar title="Application">
+  <header class="pa-0">
+    <v-toolbar title="Vue Test Application By Hamzat">
       <v-btn
           @click="router.push({ name: 'CartView' })"
           color="primary"
@@ -27,7 +26,6 @@
 
 <style scoped>
 .cart-items {
-  text-align: end;
   padding: 16px;
   font-weight: bold;
   font-size: 24px;
