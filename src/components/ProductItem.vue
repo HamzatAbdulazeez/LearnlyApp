@@ -11,6 +11,7 @@
       <v-card-title class="headline text-center">
         {{ props.productData.brand }}
       </v-card-title>
+
       <v-card-subtitle class="text-center grey--text">
         ₦ {{ (props.productData.price * 750).toFixed(2) }}
       </v-card-subtitle>
